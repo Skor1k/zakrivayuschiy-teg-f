@@ -6,7 +6,6 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
@@ -17,4 +16,418 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-primary, "Inter", sans-serif);
+  font-variation-settings: "wght" var(--font-weight-normal, 400);
+  background: var(--gradient-background, #ffffff);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  inline-size: 100%;
+  max-inline-size: 696px;
+  padding-block-start: 100px;
+  margin: 0 auto;
+}
+
+/* Меню навигации */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: var(--color-background, #ffffff);
+  border: 2px solid var(--color-text, #000000);
+  padding-block-end: 25px;
+}
+
+.header__logo {
+  display: block;
+  color: var(--color-text, #000000);
+  padding-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  font-weight: var(--font-weight-normal, 400);
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.header__title {
+  color: var(--color-text, #000000);
+  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  font-weight: var(--font-weight-normal, 400);
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-inline-end: 20px;
+}
+
+/* Кнопки переключения тем */
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  padding-block-start: 5px;
+  padding-inline-start: 20px;
+  gap: 14px;
+}
+
+.theme-menu__button {
+  position: relative;
+  border: none;
+  padding: 1px 0;
+  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-size: var(--font-size-s, 14px);
+  font-weight: var(--font-weight-normal, 400);
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--color-text, #000000);
+  background-color: var(--color-background, #ffffff);
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  opacity: 0.6;
+  outline: none;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  left: -20px;
+  animation: animation-arrow 0.5s ease-in-out alternate infinite;
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inline-size: 100%;
+  block-size: 2px;
+  inset-inline-start: -1px;
+  padding: 1px 0;
+  background-color: var(--color-background, #ffffff);
+  transition: scale 0.3s ease;
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Контент — карточки */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card {
+  background-color: var(--color-background, #ffffff);
+  border: 2px solid var(--color-text, #000000);
+}
+
+.card__title {
+  padding: 4px 10px;
+  font-family: var(--font-primary, "Inter", sans-serif);
+  font-size: var(--font-size-m, 18px);
+  font-variation-settings: "wght" var(--font-weight-bold, 700);
+  color: var(--color-text, #000000);
+}
+
+.card__image-group {
+  position: relative;
+  border-block-start: 2px solid var(--color-text, #000000);
+  border-block-end: 2px solid var(--color-text, #000000);
+}
+
+.card__label {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  right: 25px;
+  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-size: var(--font-size-s, 14px);
+  text-transform: uppercase;
+  color: var(--color-text, #000000);
+  opacity: 0.5;
+  text-shadow: 0 0 1px var(--color-background, #ffffff);
+  mix-blend-mode: hard-light;
+}
+
+.card__image {
+  display: flex;
+  flex: 1;
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+}
+
+.card__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  padding: 25px 25px 0 25px;
+}
+
+.card__text {
+  font-family: var(--font-primary, "Inter", sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-m, 18px);
+  font-style: normal;
+  line-height: 21px;
+  color: var(--color-text, #000000);
+}
+
+.card__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+  padding: 25px;
+}
+
+.card__icon-button {
+  display: flex;
+  align-items: center;
+  background: var(--color-background, #ffffff);
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  padding: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--color-text, #000000);
+}
+
+.card__like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 130px;
+  padding: 10px 36px;
+  border: 2px solid var(--color-text, #000000);
+}
+
+.like-icon {
+  inline-size: 39px;
+  block-size: 36px;
+}
+
+.button {
+  position: relative;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-weight: var(--font-weight-normal, 400);
+  font-size: var(--font-size-s, 14px);
+  line-height: 100%;
+  background-color: var(--color-background, #ffffff);
+  border: 2px solid var(--color-text, #000000);
+  padding: 10px 35px;
+  transition: box-shadow 0.3s ease;
+  appearance: none;
+  cursor: pointer;
+}
+
+.button__text {
+  color: var(--color-button-text, #ffffff);
+  mix-blend-mode: difference;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px 0px var(--color-text, #000000);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-color: var(--color-text, #000000);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+/* Футер с кнопкой */
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 auto;
+  justify-content: center;
+  padding-block-start: 50px;
+  padding-block-end: 100px;
+}
+
+/* Модальное окно */
+
+.button__open-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 19px;
+  gap: 8px;
+  inline-size: fit-content;
+}
+
+.button__icon-save {
+  display: flex;
+  flex-direction: row;
+  inline-size: 21px;
+  block-size: 21px;
+  color: var(--color-button-text, #ffffff);
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  box-sizing: border-box;
+  padding: 30px;
+  max-inline-size: 353px;
+  border: 2px solid var(--color-text, #000000);
+  color: var(--color-text, #000000);
+  background: var(--color-background, #ffffff);
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.dialog__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog__icon {
+  width: 39px;
+  height: 39px;
+  flex: none;
+}
+
+.dialog__text {
+  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-size: var(--font-size-s, 14px);
+  font-weight: var(--font-weight-normal, 400);
+  font-style: normal;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: var(--color-text, #000000);
+}
+
+.dialog__button {
+  inline-size: 100%;
+}
+
+/* Overlay для модального окна */
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Фильтры для изображений */
+
+.grayscale {
+  filter: grayscale(80%);
+}
+
+.sepia {
+  filter: sepia(60%);
+}
+
+.sepia-saturate {
+  filter: sepia(50%) saturate(180%);
+}
+
+.saturation {
+  filter: saturate(3);
+}
+
+.hue-rotate {
+  filter: hue-rotate(33deg);
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+.blur-brightness {
+  filter: blur(4px) brightness(120%);
+}
+
+
+
+/* Стили для мобильных устройств */
+
+@media (width <= 375px) {
+  .dialog {
+    padding: 30px 42px;
+    max-inline-size: 341px;
+  }
+
+  .button__icon-save {
+    inline-size: 28px;
+    block-size: 28px;
+    padding-block-end: 8px;
+  }
+
+  .button__open-modal {
+    flex-direction: column;
+  }
+}
+
+/* Проверка для браузеров */
+
+@supports (
+  (-webkit-text-stroke: 1px var(--color-background, #ffffff)) or
+    (text-stroke: 1px var(--color-background, #ffffff))
+) {
+  .card__label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--color-background, #ffffff);
+    text-stroke: 1px var(--color-background, #ffffff);
+  }
 }

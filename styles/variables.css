@@ -1,1 +1,32 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+
+  /* Основные цвета */
+
+  --color-light: #FFFFFF;
+  --color-dark: #000000;
+  --color-dark-accent: #00CC14;
+
+  /* Цвета для иконки Like */
+
+  --color-heart-body: none;
+  --color-heart: #FF0000;
+
+  /* Цвета для фона */
+
+  --color-background: var(--color-light, #ffffff);
+  --gradient-background:
+    repeating-linear-gradient(to left, #d3d3d3 0 2px, #d3d3d300 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, #d3d3d300 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+
+  /* Настройки шрифтов */
+
+  --font-primary: "Inter", sans-serif;
+  --font-weight-normal: 400;
+  --font-secondary: "PressStart2P", monospace;
+  --font-weight-bold: 700;
+  --font-size-m: 18px;
+  --font-size-s: 14px;
+}
