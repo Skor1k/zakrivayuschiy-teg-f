@@ -435,10 +435,7 @@
 
 /* Проверка для браузеров */
 
-@supports (
-  (-webkit-text-stroke: 1px var(--color-background, #ffffff)) or
-    (text-stroke: 1px var(--color-background, #ffffff))
-) {
+@supports (-webkit-text-stroke: 1px var(--color-background, #ffffff)) or (text-stroke: 1px var(--color-background, #ffffff)) {
   .card__label {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--color-background, #ffffff);
