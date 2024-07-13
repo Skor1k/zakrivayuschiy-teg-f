@@ -43,16 +43,16 @@
   gap: 20px;
   background: var(--color-background, #ffffff);
   border: 2px solid var(--color-text, #000000);
-  padding-block-end: 25px;
+  padding-block-end: 20px;
 }
 
 .header__logo {
   display: block;
   color: var(--color-text, #000000);
   padding-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
-  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-family: var(--font-secondary, "PressStart2P", fantasy);
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
-  font-weight: var(--font-weight-normal, 400);
+  font-weight: 400;
   font-style: normal;
   line-height: normal;
   text-transform: uppercase;
@@ -60,13 +60,12 @@
 
 .header__title {
   color: var(--color-text, #000000);
-  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-family: var(--font-secondary, "PressStart2P", fantasy);
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
-  font-weight: var(--font-weight-normal, 400);
+  font-weight: 400;
   font-style: normal;
   line-height: normal;
   text-transform: uppercase;
-  padding-inline-end: 20px;
 }
 
 /* Кнопки переключения тем */
@@ -74,18 +73,18 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
-  padding-block-start: 5px;
-  padding-inline-start: 20px;
-  gap: 14px;
+  padding-block-start: 3px;
+  padding-inline-start: 16px;
+  gap: 10px;
 }
 
 .theme-menu__button {
   position: relative;
   border: none;
   padding: 1px 0;
-  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-family: var(--font-secondary, "PressStart2P", fantasy);
   font-size: var(--font-size-s, 14px);
-  font-weight: var(--font-weight-normal, 400);
+  font-weight: 400;
   font-style: normal;
   line-height: normal;
   text-transform: uppercase;
@@ -120,13 +119,13 @@
   content: "";
   display: block;
   position: absolute;
+  bottom: -2px;
+  left: 0;
   inline-size: 100%;
   block-size: 2px;
-  inset-inline-start: -1px;
-  padding: 1px 0;
-  background-color: var(--color-background, #ffffff);
-  transition: scale 0.3s ease;
-  transform-origin: left;
+  background-color: var(--color-text, #000000);
+  transition: transform 0.3s ease;
+  transform-origin: 0 0;
   transform: scaleX(0);
   opacity: 0.6;
 }
@@ -166,8 +165,8 @@
   position: absolute;
   z-index: 1;
   top: 25px;
-  right: 25px;
-  font-family: var(--font-secondary, "PressStart2P", monospace);
+  right: 22px;
+  font-family: var(--font-secondary, "PressStart2P", fantasy);
   font-size: var(--font-size-s, 14px);
   text-transform: uppercase;
   color: var(--color-text, #000000);
@@ -206,7 +205,7 @@
   flex-direction: row;
   justify-content: end;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   padding: 25px;
 }
 
@@ -247,8 +246,8 @@
   position: relative;
   justify-content: center;
   box-sizing: border-box;
-  font-family: var(--font-secondary, "PressStart2P", monospace);
-  font-weight: var(--font-weight-normal, 400);
+  font-family: var(--font-secondary, "PressStart2P", fantasy);
+  font-weight: 400;
   font-size: var(--font-size-s, 14px);
   line-height: 100%;
   background-color: var(--color-background, #ffffff);
@@ -349,9 +348,9 @@
 }
 
 .dialog__text {
-  font-family: var(--font-secondary, "PressStart2P", monospace);
+  font-family: var(--font-secondary, "PressStart2P", fantasy);
   font-size: var(--font-size-s, 14px);
-  font-weight: var(--font-weight-normal, 400);
+  font-weight: 400;
   font-style: normal;
   line-height: 150%;
   text-transform: uppercase;
@@ -360,6 +359,7 @@
 
 .dialog__button {
   inline-size: 100%;
+  text-transform: uppercase;
 }
 
 /* Overlay для модального окна */
@@ -398,11 +398,26 @@
   filter: blur(4px) brightness(120%);
 }
 
-
-
 /* Стили для мобильных устройств */
 
 @media (width <= 375px) {
+  .header {
+    gap: 22px;
+  }
+
+  .header__logo {
+    padding-block-start: 112px;
+  }
+
+  .header__title {
+    padding-block-start: 4px;
+  }
+
+  .card__label {
+    top: 22px;
+    right: 12px;
+  }
+
   .dialog {
     padding: 30px 42px;
     max-inline-size: 341px;
@@ -411,7 +426,6 @@
   .button__icon-save {
     inline-size: 28px;
     block-size: 28px;
-    padding-block-end: 8px;
   }
 
   .button__open-modal {

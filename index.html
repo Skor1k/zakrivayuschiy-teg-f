@@ -22,7 +22,7 @@
     <!-- Меню навигации -->
 
     <header class="header">
-      <span class="header__logo">&lt;/HTML&gt;</span>
+      <a><span class="header__logo">&lt;/HTML&gt;</span></a>
       <h1 class="header__title">закрывающий тег</h1>
 
       <nav class="theme-menu header__theme-menu">
@@ -357,8 +357,8 @@
 
       <!-- Футер и модальное окно -->
 
-      <footer class="footer">
-        <button onclick="window.dialog.showModal()" aria-controls="dialog" class="button button__open-modal">
+      <section class="footer">
+        <button type="button" onclick="window.dialog.showModal()" aria-controls="dialog" class="button button__open-modal">
           <svg class="button__icon-save" viewBox="0 0 28 28">
             <use href="svg/floppy.svg#floppy"/>
           </svg>
@@ -375,11 +375,11 @@
 
           <form method="dialog">
             <button type="submit" class="button dialog__button">
-              <span class="button__text">ок</span>
+              <span class="button__text">Oк</span>
             </button>
           </form>
         </dialog>
-      </footer>
+      </section>
     </main>
     <script src="./scripts/like.js"></script>
   </body>
